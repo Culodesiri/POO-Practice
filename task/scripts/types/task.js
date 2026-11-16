@@ -1,51 +1,34 @@
 export class Task {
-  constructor(text, category, completed = false) {
-    this.text = text;
-    this.category = category;
-    this.completed = completed;
-  }
-
-  complete() {
-    this.completed = true;
-  }
-
-  render() {
-    const item = document.createElement('div');
-    item.className = 'task-item';
-
-    if (this.completed) {
-      item.classList.add('completed');
+    constructor(text, category, completed) {
+        this.text = text;
+        this.category = category;
+        this.completed = completed;
     }
 
-    const infoWrapper = document.createElement('div');
-    infoWrapper.className = 'task-info';
+    Render(parent) {
+        const card = document.createElement("div");
 
-    const categoryBadge = document.createElement('span');
-    categoryBadge.className = 'task-category';
-    categoryBadge.textContent = this.category;
+        const textStyle = this.completed ? 'style="text-decoration: line-through;"' : '';
 
-    const taskText = document.createElement('p');
-    taskText.className = 'task-text';
-    taskText.textContent = this.text;
+        card.innerHTML = `
+        <h2 ${textStyle}>${this.text}</h2>
+        <p>Category: ${this.category}</p>
+        <button>Complete</button>
+        `;
 
-    infoWrapper.appendChild(categoryBadge);
-    infoWrapper.appendChild(taskText);
+        const titleElement = card.querySelector("h2");
+        const completeBtn = card.querySelector("button");
 
-    const completeButton = document.createElement('button');
-    completeButton.className = 'complete-btn';
-    completeButton.textContent = this.completed ? 'Completed' : 'Complete';
-    completeButton.disabled = this.completed;
+        if (this.completed) {
+            completeBtn.disabled = true;
+        }
 
-    completeButton.addEventListener('click', () => {
-      this.complete();
-      item.classList.add('completed');
-      completeButton.textContent = 'Completed';
-      completeButton.disabled = true;
-    });
+        completeBtn.addEventListener("click", () => {
+            this.completed = true;
+            titleElement.style.textDecoration = "line-through";
+            completeBtn.disabled = true;
+        });
 
-    item.appendChild(infoWrapper);
-    item.appendChild(completeButton);
-
-    return item;
-  }
+        parent.appendChild(card);
+    }
 }

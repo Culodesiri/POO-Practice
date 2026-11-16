@@ -1,41 +1,34 @@
 export class Movie {
-  constructor(title, director, year, rating) {
-    this.title = title;
-    this.director = director;
-    this.year = year;
-    this.rating = rating;
-  }
-
-  isTopRated() {
-    return this.rating >= 8;
-  }
-
-  render() {
-    const card = document.createElement('article');
-    card.className = 'movie-card';
-
-    if (this.isTopRated()) {
-      card.classList.add('top-rated');
+    constructor(title, director, year, rating) {
+        this.title = title;
+        this.director = director;
+        this.year = year;
+        this.rating = rating;
     }
 
-    const badge = this.isTopRated()
-      ? '<span class="star-badge">★ Masterpiece</span>'
-      : '';
+    Render(parent) {
+        const card = document.createElement("div");
 
-    card.innerHTML = `
-      <div class="card-header">
-        <h2>${this.title}</h2>
-        ${badge}
-      </div>
-      <p class="director"><strong>Director:</strong> ${this.director}</p>
-      <div class="card-footer">
-        <span class="year">${this.year}</span>
-        <span class="rating ${this.isTopRated() ? 'rating-high' : ''}">
-          ${this.rating.toFixed(1)} / 10
-        </span>
-      </div>
-    `;
+        const isTopRated = this.rating >= 8;
+        const badge = isTopRated ? " ★" : "";
 
-    return card;
-  }
+        if (isTopRated) {
+            card.style.border = "2px solid gold";
+            card.style.padding = "10px";
+            card.style.marginBottom = "10px";
+        } else {
+            card.style.border = "1px solid #ccc";
+            card.style.padding = "10px";
+            card.style.marginBottom = "10px";
+        }
+
+        card.innerHTML = `
+        <h2>${this.title}${badge}</h2>
+        <p>Director: ${this.director}</p>
+        <p>Year: ${this.year}</p>
+        <p>Rating: ${this.rating} / 10</p>
+        `;
+
+        parent.appendChild(card);
+    }
 }

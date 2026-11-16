@@ -1,44 +1,32 @@
 [
-  {
-    "name": "Alice Johnson",
-    "role": "Frontend Developer",
-    "department": "Development",
-    "available": true
-  },
-  {
-    "name": "Marcus Vance",
-    "role": "UI/UX Designer",
-    "department": "Design",
-    "available": true
-  },
-  {
-    "name": "Elena Rostova",
-    "role": "Backend Architect",
-    "department": "Development",
-    "available": false
-  },
-  {
-    "name": "Daniel Kim",
-    "role": "Product Manager",
-    "department": "Management",
-    "available": true
-  },
-  {
-    "name": "Sofia Morales",
-    "role": "Brand Designer",
-    "department": "Design",
-    "available": false
-  },
-  {
-    "name": "Liam O'Connor",
-    "role": "QA Automation Engineer",
-    "department": "Testing",
-    "available": true
-  },
-  {
-    "name": "Chloe Bennett",
-    "role": "Full Stack Developer",
-    "department": "Development",
-    "available": true
-  }
+    {
+        "name": "Alice Johnson",
+        "role": "Frontend Developer",
+        "department": "Development",
+        "available": true
+    },
+    {
+        "name": "Marcus Vance",
+        "role": "UI/UX Designer",
+        "department": "Design",
+        "available": true
+    },
+    {
+        "name": "Elena Rostova",
+        "role": "Backend Architect",
+        "department": "Development",
+        "available": false
+    },
+    {
+        "name": "Sofia Morales",
+        "role": "Graphic Designer",
+        "department": "Design",
+        "available": false
+    },
+    {
+        "name": "Daniel Kim",
+        "role": "Product Manager",
+        "department": "Management",
+        "available": true
+    }
 ]

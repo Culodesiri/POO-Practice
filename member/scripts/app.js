@@ -1,63 +1,55 @@
 import { Member } from './types/member.js';
 
 class Main {
-  constructor() {
-    this.members = [];
-    this.container = document.getElementById('team-container');
-    this.departmentFilter = document.getElementById('department-filter');
-  }
-
-  async init() {
-    try {
-      const response = await fetch('./data/team.json');
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const data = await response.json();
-      this.members = data.map(
-        (item) => new Member(item.name, item.role, item.department, item.available)
-      );
-
-      this.populateDepartmentOptions();
-      this.setupEventListeners();
-      this.render();
-    } catch (error) {
-      console.error('Error loading team members:', error);
+    constructor() {
+        this.memberHolder = document.getElementById("member-holder");
+        this.departmentSelect = document.getElementById("department-select");
+        this.members = [];
     }
-  }
 
-  populateDepartmentOptions() {
-    const departments = [...new Set(this.members.map((member) => member.department))];
-    departments.forEach((department) => {
-      const option = document.createElement('option');
-      option.value = department;
-      option.textContent = department;
-      this.departmentFilter.appendChild(option);
-    });
-  }
+    async Initialize() {
+        const teamFile = await fetch('./data/team.json');
+        const teamData = await teamFile.json();
 
-  setupEventListeners() {
-    this.departmentFilter.addEventListener('change', () => {
-      this.render();
-    });
-  }
+        teamData.forEach((memberData) => {
+            const member = new Member(
+                memberData.name,
+                memberData.role,
+                memberData.department,
+                memberData.available
+            );
 
-  render() {
-    const selectedDepartment = this.departmentFilter.value;
-    const filteredMembers =
-      selectedDepartment === 'all'
-        ? this.members
-        : this.members.filter((member) => member.department === selectedDepartment);
+            this.members.push(member);
+        });
 
-    this.container.innerHTML = '';
-    filteredMembers.forEach((member) => {
-      const cardElement = member.render();
-      this.container.appendChild(cardElement);
-    });
-  }
+        const departments = [...new Set(this.members.map((member) => member.department))];
+        departments.forEach((department) => {
+            const option = document.createElement("option");
+            option.value = department;
+            option.textContent = department;
+            this.departmentSelect.appendChild(option);
+        });
+
+        this.departmentSelect.addEventListener("change", () => {
+            this.render();
+        });
+
+        this.render();
+    }
+
+    render() {
+        this.memberHolder.innerHTML = "";
+        const selectedDepartment = this.departmentSelect.value;
+
+        const filteredMembers = selectedDepartment === "All"
+            ? this.members
+            : this.members.filter((member) => member.department === selectedDepartment);
+
+        filteredMembers.forEach((member) => {
+            member.Render(this.memberHolder);
+        });
+    }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  const app = new Main();
-  app.init();
-});
+const app = new Main();
+app.Initialize();
