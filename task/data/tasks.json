@@ -1,0 +1,32 @@
+[
+  {
+    "text": "Design the database schema for the user module",
+    "category": "Development",
+    "completed": false
+  },
+  {
+    "text": "Review pull requests from the frontend team",
+    "category": "Code Review",
+    "completed": true
+  },
+  {
+    "text": "Update project documentation in the repository",
+    "category": "Documentation",
+    "completed": false
+  },
+  {
+    "text": "Fix responsive layout issue on mobile devices",
+    "category": "UI/UX",
+    "completed": false
+  },
+  {
+    "text": "Prepare sprint demo presentation",
+    "category": "Management",
+    "completed": false
+  },
+  {
+    "text": "Write unit tests for authentication service",
+    "category": "Testing",
+    "completed": true
+  }
+]
