@@ -1,30 +1,30 @@
 [
     {
-        "name": "Alice Johnson",
+        "name": "Mario",
         "role": "Frontend Developer",
         "department": "Development",
         "available": true
     },
     {
-        "name": "Marcus Vance",
+        "name": "Karlos",
         "role": "UI/UX Designer",
         "department": "Design",
         "available": true
     },
     {
-        "name": "Elena Rostova",
+        "name": "Aleciz",
         "role": "Backend Architect",
         "department": "Development",
         "available": false
     },
     {
-        "name": "Sofia Morales",
+        "name": "Vistiti",
         "role": "Graphic Designer",
         "department": "Design",
         "available": false
     },
     {
-        "name": "Daniel Kim",
+        "name": "Bin Landen",
         "role": "Product Manager",
         "department": "Management",
         "available": true
